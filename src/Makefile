@@ -1,7 +1,7 @@
 #Makefile
 # gcc 11.2.0
 standard = c++20
-objects = main.o resultBuilder.o
+objects = main.o randomize.o resultBuilder.o
 
 .PHONY: all
 all: sf_26
@@ -9,7 +9,8 @@ all: sf_26
 sf_26: ${objects}
 	gcc -o sf_26 ${objects} -lstdc++
 
-main.o:
+main.o: randomize.h
+randomize.o: randomize.h
 resultBuilder.o: resultBuilder.h resultBuilder.cpp
 	gcc -o resultBuilder.o resultBuilder.cpp -c -std=${standard}
 
