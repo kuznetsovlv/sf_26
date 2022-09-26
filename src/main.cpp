@@ -1,5 +1,8 @@
 #include <cstdint>
 #include "createRandomArray.h"
+#include "log.h"
+#include "processors.h"
+#include "randomize.h"
 
 int main()
 {
