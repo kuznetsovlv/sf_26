@@ -2,7 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 
-size_t randomize(size_t from = 0, size_t to = (size_t) - 1)
+template<class T>
+T randomize()
 {
 	static bool initiated = false;
 
@@ -12,10 +13,18 @@ size_t randomize(size_t from = 0, size_t to = (size_t) - 1)
 		initiated = true;
 	}
 
-	int32_t randoms[] = {rand(), rand()};
-	size_t result = *(reinterpret_cast<size_t*>(randoms));
+	size_t size = sizeof(size_t) / sizeof(int);
 
-	result = from + result * static_cast<double>(to - from) / ((size_t) - 1);
+	int *ints = new int[size];
 
-	return result;
+	for(size_t i = 0; i < size; ++i)
+	{
+		*(ints + i) = rand();
+	}
+
+	T result = *(reinterpret_cast<T*>(ints));
+
+	delete[] ints;
+
+	return rand() % 2 ? result : ~result;
 }

@@ -1,3 +1,6 @@
 #pragma once
 
-size_t randomize(size_t from  = 0, size_t to = (size_t) - 1);
+template<class T>
+T randomize();
+
+#include "randomize.cpp"

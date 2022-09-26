@@ -1,9 +1,10 @@
-#include <iostream>
-#include "randomize.h"
+#include <cstdint>
+#include "createRandomArray.h"
 
 int main()
 {
+	int32_t *arr = createRandomArray(1000000000);
 
-	std::cout << randomize() << std::endl;
+	delete[] arr;
 	return 0;
 }
