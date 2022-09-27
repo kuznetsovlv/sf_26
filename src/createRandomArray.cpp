@@ -9,7 +9,7 @@ int32_t *createRandomArray(const size_t size)
 
 	for(size_t i = 0; i < size; ++i)
 	{
-		*(res + i) = randomize<int32_t>();
+		*(res + i) = randomize<int32_t>() / 1000000;
 	}
 
 	return res;

@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>
+#include <functional>
 #include <thread>
 #include <vector>
 #include "processors.h"
@@ -24,9 +25,9 @@ int64_t sumByFlatThreads(const int32_t *arr, const size_t size, const size_t thr
 	const int32_t *end = arr + size + 1;
 	const size_t step = getStep();
 
-	for(const int32_t *b = arr; b < end; b += (step + 1))
+	for(const int32_t *b = arr; b < end; b += step)
 	{
-		const int32_t *e = b + step + 1;
+		const int32_t *e = b + step;
 
 		if(e > end)
 		{

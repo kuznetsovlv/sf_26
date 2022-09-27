@@ -1,13 +1,14 @@
-#include <cstdint>
-#include "createRandomArray.h"
+#include <cstddef>
 #include "log.h"
-#include "processors.h"
-#include "randomize.h"
+
+const size_t SIZES[] = {1000, 2000, 10000, 1000000};
 
 int main()
 {
-	int32_t *arr = createRandomArray(1000000000);
+	for(size_t i = 0; i < sizeof(SIZES) / sizeof(size_t); ++i)
+	{
+		doTests(SIZES[i]);
+	}
 
-	delete[] arr;
 	return 0;
 }
